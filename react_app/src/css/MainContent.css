@@ -8,17 +8,64 @@ body {
 }
 
 .mainAppBody {
-  background-color: #263238;
-  width: 60vw;
-  height: 60vh;
+  background-color: #272C2C;
+  width: 30vw;
   display: flex;
   border-radius: 0.5rem;
-  flex-direction: row;
+  flex-direction: column;
   overflow-y: auto;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 5%;
 }
 
-.mainAppBody h1 {
-  color: white;
+.mainAppBody input {
+  width: 28vw;
+  height: 50px;
+  border-radius: 4rem;
+  border-color: white;
+  border-width: 0;
+  padding: 10px;
+  font-size: 30px;
+  outline: none
+}
+
+.mainAppBody input:focus {
+  outline-style: solid;
+  outline-width: 4px;
+  outline-color: #604F75;
+}
+
+.mainAppBody select {
+  width: 04vw;
+  height: 04vh;
+  color: #B8BCC5;
+  font-size: large;
+  background-color: #604F75;
+  border-color: #604F75;
+  border-radius: 4rem;
+  font-size: large;
+}
+
+.mainAppBody select:hover {
+  transform: scale(1.25, 1.25);
+}
+
+.mainAppBody button {
+  width: 12vw;
+  height: 06vh;
+  align-self: center;
+  background-color: #604F75;
+  border: #604F75;
+  border-radius: 10rem;
+  color: #B8BCC5;
+  font-size: large;
+}
+
+.mainAppBody button:hover {
+  transform: scale(1.25, 1.25);
+}
+
+.mainAppBody h4 {
+  color: #B8BCC5;
 }
