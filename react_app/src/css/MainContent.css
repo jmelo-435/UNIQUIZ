@@ -1,4 +1,4 @@
-.mainContent{
+.mainContent {
   width: 100vw;
   height: 100%;
   display: flex;
@@ -29,7 +29,7 @@
   border-width: 0;
   padding: 10px;
   font-size: 30px;
-  outline: none
+  outline: none;
 }
 
 .mainAppBody input:focus {
@@ -46,9 +46,7 @@
   background-color: #604F75;
   border-color: #604F75;
   border-radius: 4rem;
-  font-size: large;
   cursor: pointer;
-
 }
 
 .mainAppBody select:hover {
@@ -68,8 +66,9 @@
 }
 
 .mainAppBody button:hover {
-  transform: scale(1.10, 1.10);
+  transform: scale(1.1, 1.1);
 }
+
 .mainAppBody button:active {
   transform: translateY(2px);
 }
