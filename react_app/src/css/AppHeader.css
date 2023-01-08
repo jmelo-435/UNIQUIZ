@@ -1,0 +1,29 @@
+.appHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.appHeader h1{
+    font-size: 5vh;
+    color: #3E4F6D;
+}
+
+.appHeader button {
+    width: 12vw;
+    height: 06vh;
+    align-self: center;
+    background-color: #604F75;
+    border: #604F75;
+    border-radius: 10rem;
+    color: #B8BCC5;
+    font-size: large;
+    cursor: pointer;
+  }
+
+  .appHeader button:hover {
+    transform: scale(1.10, 1.10);
+  }
+  .appHeader button:active {
+    transform: translateY(2px);
+  }

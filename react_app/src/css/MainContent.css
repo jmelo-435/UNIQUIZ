@@ -1,15 +1,16 @@
-body {
-  font-family: sans-serif;
+.mainContent{
+  width: 100vw;
+  height: 100%;
   display: flex;
-  height: 100vh;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-content: center;
   justify-content: center;
 }
 
 .mainAppBody {
   background-color: #272C2C;
   width: 30vw;
+  height: fit-content;
   display: flex;
   border-radius: 0.5rem;
   flex-direction: column;
@@ -17,6 +18,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   padding: 5%;
+  align-self: center;
 }
 
 .mainAppBody input {
@@ -45,6 +47,8 @@ body {
   border-color: #604F75;
   border-radius: 4rem;
   font-size: large;
+  cursor: pointer;
+
 }
 
 .mainAppBody select:hover {
@@ -60,10 +64,14 @@ body {
   border-radius: 10rem;
   color: #B8BCC5;
   font-size: large;
+  cursor: pointer;
 }
 
 .mainAppBody button:hover {
-  transform: scale(1.25, 1.25);
+  transform: scale(1.10, 1.10);
+}
+.mainAppBody button:active {
+  transform: translateY(2px);
 }
 
 .mainAppBody h4 {
