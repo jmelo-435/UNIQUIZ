@@ -1,8 +1,10 @@
 import {
   DbTestResponseCodes,
   TestResponseCodes,
+  GetQuestionsResponseCodes,
 } from "./ApiResponseCodes";
 import axios from "axios";
+import {Question} from  "../domain/Question";
 
 const root = "http://localhost";
 
@@ -10,6 +12,7 @@ const Endpoints = Object.freeze({
   Test: "/api",
   DbTest: "/api/db_test",
   DbTestCreate: "/api/db_test/create",
+  GetQuestions:"/api/get_questions/"
 });
 
 const Methods = Object.freeze({
@@ -104,4 +107,39 @@ export async function dbTestCreateApi() {
     Methods.POST);
   const response = await getApiResponse(params);
   return new DbTestCreateResponse(response);
+}
+
+export async function getQuestions(number_of_questions) {
+  class GetQuestionsCreateResponse {
+    constructor(res) {
+      this.responseCode = extractResponseCode(GetQuestionsResponseCodes, res);
+      this.sucess = res.sucess;
+      const questions=[];
+      
+      res.questions.map((question) => {
+        const returnedQuestion = new Question()
+        returnedQuestion.title = question.title
+        returnedQuestion.option1 = question.option1
+        returnedQuestion.option2 = question.option2
+        returnedQuestion.option3=question.option3
+        returnedQuestion.option4=question.option4
+        returnedQuestion.option5=question.option5
+        returnedQuestion.answer=question.answer
+          questions.push(returnedQuestion)
+        }
+        )
+    
+
+      
+      this.questions = questions
+      return this;
+    }
+  }
+
+  const params = new ApiRequestParameters(
+    Endpoints.GetQuestions+String(number_of_questions),
+    "{}",
+    Methods.GET);
+  const response = await getApiResponse(params);
+  return new GetQuestionsCreateResponse(response);
 }
