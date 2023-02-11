@@ -22,11 +22,11 @@ services:
       bridge:
         aliases:
           - react-app
-  flask-uniquiz:
+  django-uniquiz:
     build:
-      context: ./flask_api
+      context: ./django_api
       dockerfile: Dockerfile
-    container_name: flask-uniquiz
+    container_name: django-uniquiz
     environment:
       FLASK_APP: "/var/www/flask_api/create_app.py"
       FLASK_ENV: "development"
@@ -35,7 +35,7 @@ services:
     networks:
       bridge:
         aliases:
-          - flask-app
+          - django-app
   mongo-uniquiz:
     image: mongo
     networks:

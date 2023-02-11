@@ -12,7 +12,7 @@ const Endpoints = Object.freeze({
   Test: "/api",
   DbTest: "/api/db_test",
   DbTestCreate: "/api/db_test/create",
-  GetQuestions:"/api/get_questions/"
+  GetQuestions:"/api/questions/random/"
 });
 
 const Methods = Object.freeze({
@@ -113,18 +113,17 @@ export async function getQuestions(number_of_questions) {
   class GetQuestionsCreateResponse {
     constructor(res) {
       this.responseCode = extractResponseCode(GetQuestionsResponseCodes, res);
-      this.sucess = res.sucess;
       const questions=[];
       
-      res.questions.map((question) => {
+      res.map((question) => {
         const returnedQuestion = new Question()
         returnedQuestion.title = question.title
-        returnedQuestion.option1 = question.option1
-        returnedQuestion.option2 = question.option2
-        returnedQuestion.option3=question.option3
-        returnedQuestion.option4=question.option4
-        returnedQuestion.option5=question.option5
-        returnedQuestion.answer=question.answer
+        returnedQuestion.option1 = question.option_1
+        returnedQuestion.option2 = question.option_2
+        returnedQuestion.option3=question.option_3
+        returnedQuestion.option4=question.option_4
+        returnedQuestion.option5=question.option_5
+        returnedQuestion.answer=question.correct_answer
           questions.push(returnedQuestion)
         }
         )

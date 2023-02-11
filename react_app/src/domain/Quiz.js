@@ -1,3 +1,5 @@
+import { getQuestions } from "../repo/repo"
+
 class AnswerAttempt {
     constructor(question,
         timeToAnswerInSeconds,
@@ -6,6 +8,7 @@ class AnswerAttempt {
         setCurrentQuestion,
         setIsTurnRunning
         ) {
+            
         setCurrentQuestionAnswerState(null)
         this.setCurrentQuestionAnswerState=setCurrentQuestionAnswerState
         setIsTurnRunning(true)
@@ -38,7 +41,7 @@ class AnswerAttempt {
     }
 }
 export class Quiz {
-    constructor(Questions,
+    constructor(numOfQuestions,
         timeToAnswerInSeconds,
         setCurrentElapsedTimeToQuestion,
         setTotalElapsedTime,
@@ -46,12 +49,13 @@ export class Quiz {
         setCurrentQuestion,
         setIsTurnRunning
         ) {
+        this.numOfQuestions=numOfQuestions
         this.setIsTurnRunning=setIsTurnRunning
         this.timeToAnswerInSeconds=timeToAnswerInSeconds
         this.setCurrentElapsedTimeToQuestion=setCurrentElapsedTimeToQuestion
         this.setCurrentQuestionAnswerState=setCurrentQuestionAnswerState
         this.setCurrentQuestion=setCurrentQuestion
-        this.questions = Questions
+        this.questions = []
         this.turn = null
         this.initialTime = (() => {
             const currentdate = new Date()
@@ -71,7 +75,15 @@ export class Quiz {
         ) 
     }
     currentTurn = -1
-    newTurn(){
+    async newTurn(){
+        if (this.currentTurn=== -1){
+            const getQuestion = async () => {
+                const returnedQuestions = await getQuestions(this.numOfQuestions)
+                return returnedQuestions.questions
+            
+            }
+            this.questions=await getQuestion()
+        }
         this.currentTurn=this.currentTurn+1
         this.turn = new AnswerAttempt(this.questions[this.currentTurn],this.timeToAnswerInSeconds,this.setCurrentElapsedTimeToQuestion,this.setCurrentQuestionAnswerState,this.setCurrentQuestion,this.setIsTurnRunning)
     }
